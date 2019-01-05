@@ -1,4 +1,174 @@
-<channel><title></title><description></description><link>http://localhost:2368/<image><url>http://localhost:2368/favicon.png</url><title>pent0</title><link>http://localhost:2368/</image><generator>Ghost 2.9</generator><lastbuilddate>Sat, 05 Jan 2019 11:28:20 GMT</lastbuilddate><link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"><ttl>60</ttl><item><title></title><description>In New Year's eve (1/1/2019), I got the console UI screen to renders something, using the classic ui framework (Series 60 UI framework). I like to take a small time and records everything from the beginning till today.<p>This blog site will also records things in the future.</p>]]&gt;</description><link>http://localhost:2368/eka2l1-till-today-p1/<guid ispermalink="false">5c3041ced933a223ecf86db2</guid><creator></creator><pubdate>Sat, 05 Jan 2019 05:53:09 GMT</pubdate><content url="http://localhost:2368/content/images/2019/01/HelloWorld1.png" medium="image"></content><encoded><p>In New Year's eve (1/1/2019), I got the console UI screen to renders something, using the classic ui framework (Series 60 UI framework). I like to take a small time and records everything from the beginning till today.</p><p>This blog site will also records things in the future.</p><p></p><h1 id="whyitwasborn">Why it was born</h1>
+<channel><title></title><description></description><link>http://localhost:2368/<image><url>http://localhost:2368/favicon.png</url><title>pent0</title><link>http://localhost:2368/</image><generator>Ghost 2.9</generator><lastbuilddate>Sat, 05 Jan 2019 15:19:50 GMT</lastbuilddate><link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"><ttl>60</ttl><item><title></title><description>The last 3 months have huge progress. You may notices that the render window doesn't show up lately. It's because I get rid of it.<p><strong>12:31 October 20 2018</strong></p>
+<p>At that time I was headache with the stray signal problem. The semaphore was signaled twice, even third times in</p>]]&gt;</description><link>http://localhost:2368/eka2l1-till-today-part-3/<guid ispermalink="false">5c30c00c4a16851bfce7bc57</guid><category></category><creator></creator><pubdate>Sat, 05 Jan 2019 14:47:06 GMT</pubdate><content url="http://localhost:2368/content/images/2019/01/HelloWorld1-1.png" medium="image"></content><encoded><p>The last 3 months have huge progress. You may notices that the render window doesn't show up lately. It's because I get rid of it.</p><p><strong>12:31 October 20 2018</strong></p>
+<p>At that time I was headache with the stray signal problem. The semaphore was signaled twice, even third times in a row.</p>
+<p>Eventually, I found out that each time I set the request status, it signals the client thread once. But there isn't any check if I already signaled the client.</p>
+<p>The check is very important in scenario, where I forgot to return after setting a request status.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/503077800060911636/unknown.png" alt="EKA2L1 till today (Part 3)"></p>
+<p>In midnight, MediatorServer joins your party. I wasn't happy and want to kick them all out, but if I do that, none of apps would run!! So I have to treat them as precious EKA2L1 member until I can implement them and kick them all out.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/503121037982957592/unknown.png?width=841&amp;height=474" alt="EKA2L1 till today (Part 3)"></p>
+<p>Honestly, I wasn't happy that more servers are spawned, because in EKA2L1, page table switching are a costly operation. I would rather implement them if I can, but I have to keep them until the emulator becomes more stable.</p>
+<p><strong>0:02 October 22 2018</strong></p>
+<p>I bring the ImGui render back from dead few months ago. It was really helpful and speed up my working process.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/503613825380122655/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (Part 3)"></p>
+<p><img src="https://cdn.discordapp.com/attachments/431430141319708692/503973265086349313/unknown.png" alt="EKA2L1 till today (Part 3)"></p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/504690346723377152/unknown.png?width=841&amp;height=474" alt="EKA2L1 till today (Part 3)"></p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/505736721237803028/unknown.png?width=831&amp;height=474" alt="EKA2L1 till today (Part 3)"></p>
+<p>Breakpoints work too</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/507159359734808576/unknown.png?width=831&amp;height=473" alt="EKA2L1 till today (Part 3)"></p>
+<p><strong>15:12 Nov 4 2018</strong><br>
+There was issues with DLL jump where they jumps to an invalid address.</p>
+<p><img src="https://cdn.discordapp.com/attachments/463217723934113795/508300178982174720/d.png" alt="EKA2L1 till today (Part 3)"></p>
+<p>Using breakpoints, I know that the region where it starts to jump was a jump stub.<br>
+Eventually I solve it, it was a really dumb relocation fault, I add the relocation address twice.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/509049629933830144/unknown.png" alt="EKA2L1 till today (Part 3)"></p>
+<p><strong>9:02 Dec 2 2018</strong><br>
+Reversing one unknown SVC call that got removed in Symbian^3.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/518608284635103257/unknown.png" alt="EKA2L1 till today (Part 3)"></p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/518608411814920203/unknown.png" alt="EKA2L1 till today (Part 3)"></p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/518608628027097089/unknown.png" alt="EKA2L1 till today (Part 3)"></p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/518608711028310035/unknown.png" alt="EKA2L1 till today (Part 3)"></p>
+<p>The call wasn't atomic, since there is no multi-core support in Symbian^3, so I supposed it's a safe increment, decrement call, since the system call got referenced by User::SafeInc and User::SafeDec.<br>
+I named it SafeInc32.</p>
+<p><strong>21:42 Dec 5 2018</strong><br>
+Got the AknCapServer to spawned. It was suffered from many issues, but finally it raised up.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/519886187331321856/unknown.png?width=1026&amp;height=110" alt="EKA2L1 till today (Part 3)"></p>
+<p><strong>0:48 Dec 21 2018</strong><br>
+Because the emulator wasn't working as expected, I wrote a unit tests to see if there is any fault in my implementation comparing with hardware. Turn out, there are tons of them, exists mostly in server.</p>
+<p>Here is an example, the FileSeek supposed to returns the position of file pointer, but instead, whenther mode I seek, it just returns 0 in emulator.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/525369040194240512/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (Part 3)"></p>
+<p>Or for example, the MessageIpcCopy system call doesn't do anything. That's just dumb, considering it's the most critical call to communicate between process.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/526298107248640002/unknown.png?width=962&amp;height=474" alt="EKA2L1 till today (Part 3)"></p>
+<p><strong>10:46 Dec 30 2018</strong><br>
+I actually keeps the fact that the app was already called EWsWinOpActive for a few days, because it can't render images yet, but eventually I can't hold it and post it.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/528550942111563776/unknown.png" alt="EKA2L1 till today (Part 3)"></p>
+<p><img src="http://localhost:2368/content/images/2019/01/haha-2.png" alt="EKA2L1 till today (Part 3)"></p>
+<p><strong>10:43 Jan 1 2019</strong><br>
+Using ImGui again to draw texts and bitmaps, I try rendering stuffs. There are many tries:</p>
+<p><img src="https://cdn.discordapp.com/attachments/431430141319708692/529498861446627348/unknown.png" alt="EKA2L1 till today (Part 3)"></p>
+<p>The first try is funny. Basicly it does emulate the scanline behavior, cleaning the screen by spawning space characters. But with the wrong glScissor parameters and the fact that I'm spawning small window for every screen invalidation, it just looks funny,</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/529532224299859970/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (Part 3)"></p>
+<p>The app drawing the title. On hardware, this doesn't get drawed, but it got draw on EKA2L1 anyway.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/529571916399509515/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (Part 3)"></p>
+<p>The good old Hello World is back, but this time using the AKN and EIK framework. This opens possiblity for other apps/games using this classic framework to boot and maybe runs? Who knows, we need to do more tests.</p>
+<h1 id="whatiwanttosay">What I want to say</h1>
+<p>People lost interested by the time, and I get boring many times. But people still encouraged me to make my dream and their dreams once day came truth. I don't know if the feeling towards me and my work are real or not, but I would like to thank all of you. If it wasn't because of you being supportive, this would have been abadoned.</p>
+<p>I know that anyone can saw the immature of me through the code and when chatting with me. I'm still immature, but I'm ashamed of what I behave in the past. I'm sorry, but don't let that affect the work we are making.</p>
+<p>While the hype are withering, reaching near the dead, I'm gonna still doing this until what I want, and you want, are done. I'm not gonna give up that easily, but I can't promise to work on this daily without your support.</p>
+<p>Thank you, I will keep you updating on this blog.</p>
+<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>]]&gt;</encoded></item><item><title></title><description>When the emulator was started to output something people can count as progress, I starts making a UI of it.<p>You also may notices that I switch development environment to Windows. My laptop was broken and I'm only capable of doing work of the desktop, which uses Windows 10.</p><p>And</p>]]&gt;</description><link>http://localhost:2368/eka2l1-till-today-part-2/<guid ispermalink="false">5c309b354a16851bfce7bc15</guid><category></category><creator></creator><pubdate>Sat, 05 Jan 2019 12:42:06 GMT</pubdate><content url="http://localhost:2368/content/images/2019/01/haha-1.png" medium="image"></content><encoded><p>When the emulator was started to output something people can count as progress, I starts making a UI of it.</p><p>You also may notices that I switch development environment to Windows. My laptop was broken and I'm only capable of doing work of the desktop, which uses Windows 10.</p><p>And this post has a lot of code, so there is no interesting graphics stuff going on.</p><p><strong>11:42 June 8 2018</strong></p>
+<p>I starts working on a UI to make it easier for testers to install and test games/app.</p>
+<p>Since I don't have experience with Qt and I don't want to download it (pretty big size with my laptop storage), I decided to use a lighter framework that I am used to called <em>Lazarus Pascal</em>.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/454505583022833696/unknown.png?width=841&amp;height=474" alt="EKA2L1 till today (part 2)"></p>
+<p>The UI was written in Object Pascal, with the core being compiled as DLL.<br>
+It's capable of install and run application. No debug menu supported. I abadoned ImGui for this, which later I regrets.</p>
+<p><strong>8:50 June 10 2018</strong></p>
+<p>While working with the UI, I also working on making the console text display on the screen.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/455186933476360202/unknown.png?width=841&amp;height=474" alt="EKA2L1 till today (part 2)"></p>
+<p>The graphics and CPU are all rendered and ran on a single thread. Unicorn was really slow, also because of my code, it was really low quality too.</p>
+<p>Either way, it's pretty fast until some texts are displayed on the screen. The executable running is a console app I wrote myself to test memory mapping.</p>
+<p>At that time, need a fancy name for the window too!</p>
+<p>I abadoned ImGui, and use FreeType2 to render the text. Getting rid of ImGui completely from the source.</p>
+<p><strong>16:29 June 11 2018</strong><br>
+<img src="https://media.discordapp.net/attachments/431430141319708692/455664775410745344/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p>Me trying to be funny. Async operation is not implemented, so I let it be.</p>
+<p><strong>16:35 June 12 2018</strong><br>
+I begin adding support for loading EKA1 images, and installing old SIS package format.</p>
+<p>mrRosset was really nice, he helps providing me with a test application and package. I begin writing a parser and installer for the old SIS format.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/456028694138585088/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>18:46 June 12 2018</strong><br>
+While writing the parser, I have a problem, that the stringstream doesn't read anything. I got stuck with it for a while.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/456062322130157568/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>17:18 June 12 2018</strong><br>
+I uses some more minutes to find out what is wrong.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/456069702452510723/unknown.png?width=1026&amp;height=115" alt="EKA2L1 till today (part 2)"></p>
+<p>I finally fixed it though. The EInstallOpText reads some text but does not returns to the original file pointer.</p>
+<p><strong>12:30 June 13 2018</strong><br>
+The UI frontend can only runs one game. Running another game just exit immidiately</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/456148296029962242/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>23:40 June 13 2018</strong><br>
+I made the install process more visualiable.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/456497893654921216/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (part 2)"></p>
+<p>The installation now allows you to install multiple files at same time, shows you which file is currently being installed, and show you progress bar.</p>
+<p><strong>12:56 June 15 2018</strong><br>
+Working on the UI doesn't make me forget the core. I tried some more game like The Sims 3. Most of the game failed with the Overflow error at User::GetDesParameter</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/457060729154043916/unknown.png?width=952&amp;height=474" alt="EKA2L1 till today (part 2)">.</p>
+<p>I eventually give up with them temporary and move on to another homemade apps.</p>
+<p><strong>23:43 June 22 2018</strong><br>
+App requests server for the first time. At this point, I starts to look more at IPC and how it works on Symbian. Spending a week studying the services, I finally starts to write some HLE code.</p>
+<p>This was started by first implementing a parameter dump of RSessionBase::CreateSession.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/459346510811758592/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>20:42 June 24 2018</strong><br>
+I starts searching and digging about the Window Server. The window server responds for creating window, managing input (keyboard and touches), etc... Many of Symbian designs were inspired by Windows, and looking at the source code, you can probably sees that.</p>
+<p><img src="https://cdn.discordapp.com/attachments/431430141319708692/460439538066653194/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>19:22 June 25 2018</strong><br>
+While researching Windows Server, I already starts making progress on the File Server. File Server are the one responded for files operation and stuffs. File Server calls plugin DLL for interfacing with the actual filesystem, therefore, you can even make a ISO filesystem plugin DLL if you like (which actually, people make it near the end of belle, I just don't remember what app). All plugin DLL runs in usermode, and interacts with hardware using RLogicalChannel object.</p>
+<p>However, I don't intend to actually load these DLLs. A VFS is implemented, which allows me to interface Symbian filesystem with host filesystem. ROM FS is supported too.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/460781881206505484/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p>Here is me figuring out why the name of the file is missing some of it extension. The Symbian string support from EKA2L1 was poor, so these happening is reasonable.</p>
+<p><strong>17:37 June 29 2018</strong><br>
+The Window Server got some process again. This time, it successfully created a Screen Device object, and are obtaining the screen size (in pixels).</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/462204976186261504/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>13:15 July 1 2018</strong><br>
+WaitForAnyRequest system call is blocking anything from running. I already have mutex and semaphore ready, but I don't implement system call at that time. Also, the screenshot has Fs::FileOpen unimplemented</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/462682570849517568/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>19:53 July 2 2018</strong><br>
+I starts to get the directory working. This is the implementation of opcode Fs::OpenDir.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/463326285511262218/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>23:19 July 2 2018</strong><br>
+I was mentioning before the idea of using FPSX to extract ROFS image, and it failed due to lack of resources. I have another idea in mind. Building a RPKG, which is a raw zip of the Z drive. It was not really hard, and is easy for me to extract.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/463378094712160257/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (part 2)"></p>
+<p>There are some problems like some files got ignored. Turns out, I open those files with exclusive mode, that means, only my app can open it in the future, but since they are opened by also, other apps, some files are skipped.</p>
+<p>Either way, these issues are long gone. You can download the dumper here, it's call <em>Dumber</em>. Visit <a href="https://github.com/EKA2L1/EKA2L1/wiki/Dumping-the-ROM-and-ROFS">here</a> to get more information.</p>
+<p><strong>23:47 July 2 2018</strong><br>
+I revisit the emulator for some minutes, and implement the Feature Manager server.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/463385229026131978/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p>The feature manager server only has two opcode, both are used to check if features are supported. I just stubbed them to all supported.</p>
+<p>Fontbitmap Server asked the feature manager if japanese are supported, and I told it sure. I feel bad.</p>
+<p><strong>17:42 July 6 2018</strong><br>
+I decided to HLE as much server as possible, by HLEing the Font and Bitmap Server. While the server and client code makes use of C++ class that involves vtable and stuffs, I still decided to give it a try.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/464742919736262656/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p>Unfortunately later, I can't do it. I have to returns a completely new class that contains a vtable, which I can't generate it myself.</p>
+<p><strong>14:04 July 20 2018</strong><br>
+Unicorn was slowly turned to be bottleneck, so I starts writing support for Dynarmic core. I looked at Citra and Yuzu code and implemented it myself.</p>
+<p>The first try is pretty good. It ran a little bit until died by my fault.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/469753719567679488/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>14:17 July 20 2018</strong><br>
+At that time, I was also migrating from the idea of implement most subsets of API calls to implement system calls, like most morden emulator like Citra or Yuzu did.</p>
+<p>The API is really large, while implementing them gives me faster speed, it won't give me accuracy and takes me a lot of time as well.</p>
+<p>The screenshot here is the code of some first system calls being implemented. These are mixed with HLE functions.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/469764720639868929/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>19:15 July 21 2018</strong><br>
+The ObjectNext system call is the first system call to works. Here, the FBS server is running, trying to find the object <em>FbsSharedChunk</em> to check if the process has already been spawned yet.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/470202152611086347/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>18:12 July 26 2018</strong><br>
+I got few more system calls implemented. One of them is HalFunction. HAL means High-level abstraction layer. Symbian uses this to trade informations between hardware and users.</p>
+<p>So many of them unimplemented!!!!</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/471998167534272512/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>15:27 July 27 2018</strong><br>
+The app requests to spawn EComServer process, which was a good chance for me to test multi processes.</p>
+<p>During multi processes implementation, I also completely wiped out HLE API implementation. I still plans to implement HLE OpenGL ES functions, but until then, I have to say goodbye to this costly plan.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/472319013243060235/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>23:11 July 27 2018</strong><br>
+To spawn process and load libraries, we need the <em>!Loader</em> server. I implement one, and testing it!</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/472435842732785693/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>13:44 August 8 2018</strong><br>
+<img src="https://media.discordapp.net/attachments/431430141319708692/479540891862695936/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (part 2)"></p>
+<p>I adds support for scripting using Python. There are many things that is slow to do, but will faster when using scripts. For example, if I want to get a leave code, I have to hardcode a breakpoint in the code, print r0 register and recompile the code, which takes not a short time. Using script, this job seems really lightweight.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/479651750589104128/unknown.png?width=841&amp;height=473" alt="EKA2L1 till today (part 2)"></p>
+<p>Using script, I can customised the behavior of panic reporting. In this screenshot, it helps me finding the line where the panic occurs.</p>
+<p><strong>23:14 August 28 2018</strong><br>
+We got the first server to rendezvous back. When a server rendezvous back to its parent, that means it has done initializing, and ready to takes requests.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/484033151425970177/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p><strong>22:52 September 23 2018</strong><br>
+There is heatdown while I research more, but eventually works on the emulator starts with an unexisted server which related to Posix</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/493449575798013962/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p>Each process has this server spawned. This is for compability with the standard C library. The font rasterizer ityperast.dll uses fopen and fclose.</p>
+<p><strong>6:16 AM September 24 2018</strong><br>
+I wake up finding the opcodes to plan my work while I'm away from the computer. At least these engineers have fun somewhere, I was assumed that they are like zombie when writing these brainfuck code.</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/493561299410747413/unknown.png" alt="EKA2L1 till today (part 2)"></p>
+<p>I think Urosh does a fake haha for my sake.</p>
+<p><img src="http://localhost:2368/content/images/2019/01/haha.png" alt="EKA2L1 till today (part 2)"></p>
+<p>Reading Part 3 <a href="http://localhost:2368/../eka2l1-till-today-part-3/">here</a></p>]]&gt;</encoded></item><item><title></title><description>In New Year's eve (1/1/2019), I got the console UI screen to renders something, using the classic ui framework (Series 60 UI framework). I like to take a small time and records everything from the beginning till today.<p>This blog site will also records things in the future.</p>]]&gt;</description><link>http://localhost:2368/eka2l1-till-today-p1/<guid ispermalink="false">5c3041ced933a223ecf86db2</guid><category></category><creator></creator><pubdate>Sat, 05 Jan 2019 05:53:09 GMT</pubdate><content url="http://localhost:2368/content/images/2019/01/HelloWorld1.png" medium="image"></content><encoded><p>In New Year's eve (1/1/2019), I got the console UI screen to renders something, using the classic ui framework (Series 60 UI framework). I like to take a small time and records everything from the beginning till today.</p><p>This blog site will also records things in the future.</p><p></p><h1 id="whyitwasborn">Why it was born</h1>
 <ul>
 <li>The initial idea was started at March of 2018. I was reserving game structure for some Symbian games at that time (<a href="https://www.youtube.com/watch?v=nqKQGSXvaT8&amp;list=PLxLLWUewqijzrQQk1QGJ_bKmABg6vQMeu">Creebies</a>, The Big Roll in Paradise), because these musics would stuck in my mind. I was also contributing to Vita3K at that time to learn more about emulation.</li>
 <li>While the Creebies game files structure were easy to detect (I accidently discovered that game music was raw when plays the whole cache file in Audacity), I have no idea how it works in iDream games. I got no patient at looking at IDA and sees function jumping around like a circle either.</li>
@@ -55,10 +225,11 @@ I start the work again, this time implement some HLE API calls. I was really hap
 <p><img src="https://media.discordapp.net/attachments/431430141319708692/452432703971655680/unknown.png?width=841&amp;height=474" alt="EKA2L1 till today (part 1)"></p>
 <p><strong>10:55 June 4 2018</strong></p>
 <p>During IDA reversing, I discovered that the first 0x40 bytes of the stack are used to store thread create parameter. By correcting that, I get the correct create information</p>
+<p><img src="https://media.discordapp.net/attachments/431430141319708692/452436662505439232/unknown.png?width=841&amp;height=474" alt="EKA2L1 till today (part 1)"></p>
 <p><img src="https://media.discordapp.net/attachments/431430141319708692/452644647274151936/unknown.png?width=841&amp;height=474" alt="EKA2L1 till today (part 1)"></p>
 <p>Eventually, the first thread was created.</p>
 <p><strong>20:31 June 7 2018</strong></p>
 <p>Hello world!</p>
 <p><img src="https://media.discordapp.net/attachments/431430141319708692/454276090643349504/unknown.png" alt="EKA2L1 till today (part 1)"></p>
 <p><img src="http://localhost:2368/content/images/2019/01/hal.png" alt="EKA2L1 till today (part 1)"></p>
-<p></p><p></p>]]&gt;</encoded></item><item><title></title><description>Hi, This is the new blog. I only have a screenshot.<figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2019/01/unknown--2-.png" class="kg-image"></figure><p>More coming soon. I will keep my update on this website.</p>]]&gt;</description><link>http://localhost:2368/hi-i-have-a-new-blog-system/<guid ispermalink="false">5c3038fcd933a223ecf86da9</guid><creator></creator><pubdate>Sat, 05 Jan 2019 04:59:18 GMT</pubdate><content url="http://localhost:2368/content/images/2019/01/sshot.png" medium="image"></content><encoded><p>Hi, This is the new blog. I only have a screenshot.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2019/01/unknown--2-.png" class="kg-image" alt="New blog!"></figure><p>More coming soon. I will keep my update on this website.</p>]]&gt;</encoded></item></channel>
+<p>Thanks for reading, if you interested, here is <a href="http://localhost:2368/eka2l1-till-today-p1/../eka2l1-till-today-part-2/">Part 2</a></p>]]&gt;</encoded></item><item><title></title><description>Hi, This is the new blog. I only have a screenshot.<figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2019/01/unknown--2-.png" class="kg-image"></figure><p>More coming soon. I will keep my update on this website.</p>]]&gt;</description><link>http://localhost:2368/hi-i-have-a-new-blog-system/<guid ispermalink="false">5c3038fcd933a223ecf86da9</guid><creator></creator><pubdate>Sat, 05 Jan 2019 04:59:18 GMT</pubdate><content url="http://localhost:2368/content/images/2019/01/sshot.png" medium="image"></content><encoded><p>Hi, This is the new blog. I only have a screenshot.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2019/01/unknown--2-.png" class="kg-image" alt="New blog!"></figure><p>More coming soon. I will keep my update on this website.</p>]]&gt;</encoded></item></channel>
