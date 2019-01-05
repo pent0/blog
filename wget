@@ -1,0 +1,14 @@
+
+c:\Thu\Projects\pent0.github.io\versions\2.9.1>wget -r -nH -P docs -E -T 2 -np -k http://localhost:2368/ 
+
+c:\Thu\Projects\pent0.github.io\versions\2.9.1>git add docs 
+
+c:\Thu\Projects\pent0.github.io\versions\2.9.1>git commit -m "Update website" 
+On branch master
+Untracked files:
+	update_web.bat
+	wget
+
+nothing added to commit but untracked files present
+
+c:\Thu\Projects\pent0.github.io\versions\2.9.1>git push --force origin master 

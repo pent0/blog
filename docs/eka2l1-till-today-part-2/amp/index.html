@@ -119,7 +119,7 @@ It's capable of install and run application. No debug menu supported. I abadoned
 <p>At that time, need a fancy name for the window too!</p>
 <p>I abadoned ImGui, and use FreeType2 to render the text. Getting rid of ImGui completely from the source.</p>
 <p><strong>16:29 June 11 2018</strong><br>
-</p>
+<amp-img src="https://media.discordapp.net/attachments/431430141319708692/455664775410745344/unknown.png" alt="Trying to be funny" width="928" height="105" layout="responsive"></amp-img></p>
 <p>Me trying to be funny. Async operation is not implemented, so I let it be.</p>
 <p><strong>16:35 June 12 2018</strong><br>
 I begin adding support for loading EKA1 images, and installing old SIS package format.</p>
@@ -127,7 +127,7 @@ I begin adding support for loading EKA1 images, and installing old SIS package f
 <p></p>
 <p><strong>18:46 June 12 2018</strong><br>
 While writing the parser, I have a problem, that the stringstream doesn't read anything. I got stuck with it for a while.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/456062322130157568/unknown.png" alt="Stuck" width="794" height="337" layout="responsive"></amp-img></p>
 <p><strong>17:18 June 12 2018</strong><br>
 I uses some more minutes to find out what is wrong.</p>
 <p></p>
@@ -146,14 +146,14 @@ Working on the UI doesn't make me forget the core. I tried some more game like T
 <p><strong>23:43 June 22 2018</strong><br>
 App requests server for the first time. At this point, I starts to look more at IPC and how it works on Symbian. Spending a week studying the services, I finally starts to write some HLE code.</p>
 <p>This was started by first implementing a parameter dump of RSessionBase::CreateSession.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/459346510811758592/unknown.png" alt="Parameter dump" width="923" height="113" layout="responsive"></amp-img></p>
 <p><strong>20:42 June 24 2018</strong><br>
 I starts searching and digging about the Window Server. The window server responds for creating window, managing input (keyboard and touches), etc... Many of Symbian designs were inspired by Windows, and looking at the source code, you can probably sees that.</p>
-<p></p>
+<p><amp-img src="https://cdn.discordapp.com/attachments/431430141319708692/460439538066653194/unknown.png" alt="Window Server source" width="677" height="578" layout="responsive"></amp-img></p>
 <p><strong>19:22 June 25 2018</strong><br>
 While researching Windows Server, I already starts making progress on the File Server. File Server are the one responded for files operation and stuffs. File Server calls plugin DLL for interfacing with the actual filesystem, therefore, you can even make a ISO filesystem plugin DLL if you like (which actually, people make it near the end of belle, I just don't remember what app). All plugin DLL runs in usermode, and interacts with hardware using RLogicalChannel object.</p>
 <p>However, I don't intend to actually load these DLLs. A VFS is implemented, which allows me to interface Symbian filesystem with host filesystem. ROM FS is supported too.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/460781881206505484/unknown.png" alt="FileSystem" width="747" height="150" layout="responsive"></amp-img></p>
 <p>Here is me figuring out why the name of the file is missing some of it extension. The Symbian string support from EKA2L1 was poor, so these happening is reasonable.</p>
 <p><strong>17:37 June 29 2018</strong><br>
 The Window Server got some process again. This time, it successfully created a Screen Device object, and are obtaining the screen size (in pixels).</p>
@@ -163,7 +163,7 @@ WaitForAnyRequest system call is blocking anything from running. I already have 
 <p></p>
 <p><strong>19:53 July 2 2018</strong><br>
 I starts to get the directory working. This is the implementation of opcode Fs::OpenDir.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/463326285511262218/unknown.png" alt="OpenDir" width="403" height="74" layout="responsive"></amp-img></p>
 <p><strong>23:19 July 2 2018</strong><br>
 I was mentioning before the idea of using FPSX to extract ROFS image, and it failed due to lack of resources. I have another idea in mind. Building a RPKG, which is a raw zip of the Z drive. It was not really hard, and is easy for me to extract.</p>
 <p></p>
@@ -171,12 +171,12 @@ I was mentioning before the idea of using FPSX to extract ROFS image, and it fai
 <p>Either way, these issues are long gone. You can download the dumper here, it's call <em>Dumber</em>. Visit <a href="https://github.com/EKA2L1/EKA2L1/wiki/Dumping-the-ROM-and-ROFS">here</a> to get more information.</p>
 <p><strong>23:47 July 2 2018</strong><br>
 I revisit the emulator for some minutes, and implement the Feature Manager server.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/463385229026131978/unknown.png" alt="Feature Manager" width="835" height="346" layout="responsive"></amp-img></p>
 <p>The feature manager server only has two opcode, both are used to check if features are supported. I just stubbed them to all supported.</p>
 <p>Fontbitmap Server asked the feature manager if japanese are supported, and I told it sure. I feel bad.</p>
 <p><strong>17:42 July 6 2018</strong><br>
 I decided to HLE as much server as possible, by HLEing the Font and Bitmap Server. While the server and client code makes use of C++ class that involves vtable and stuffs, I still decided to give it a try.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/464742919736262656/unknown.png" alt="Fontbitmap unimplemented" width="808" height="62" layout="responsive"></amp-img></p>
 <p>Unfortunately later, I can't do it. I have to returns a completely new class that contains a vtable, which I can't generate it myself.</p>
 <p><strong>14:04 July 20 2018</strong><br>
 Unicorn was slowly turned to be bottleneck, so I starts writing support for Dynarmic core. I looked at Citra and Yuzu code and implemented it myself.</p>
@@ -189,18 +189,18 @@ At that time, I was also migrating from the idea of implement most subsets of AP
 <p></p>
 <p><strong>19:15 July 21 2018</strong><br>
 The ObjectNext system call is the first system call to works. Here, the FBS server is running, trying to find the object <em>FbsSharedChunk</em> to check if the process has already been spawned yet.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/470202152611086347/unknown.png" alt="It's running" width="978" height="381" layout="responsive"></amp-img></p>
 <p><strong>18:12 July 26 2018</strong><br>
 I got few more system calls implemented. One of them is HalFunction. HAL means High-level abstraction layer. Symbian uses this to trade informations between hardware and users.</p>
 <p>So many of them unimplemented!!!!</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/471998167534272512/unknown.png" alt="Unimplemented HAL calls" width="726" height="223" layout="responsive"></amp-img></p>
 <p><strong>15:27 July 27 2018</strong><br>
 The app requests to spawn EComServer process, which was a good chance for me to test multi processes.</p>
 <p>During multi processes implementation, I also completely wiped out HLE API implementation. I still plans to implement HLE OpenGL ES functions, but until then, I have to say goodbye to this costly plan.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/472319013243060235/unknown.png" alt="Multi process" width="704" height="88" layout="responsive"></amp-img></p>
 <p><strong>23:11 July 27 2018</strong><br>
 To spawn process and load libraries, we need the <em>!Loader</em> server. I implement one, and testing it!</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/472435842732785693/unknown.png" alt="Implementing Loader server" width="794" height="275" layout="responsive"></amp-img></p>
 <p><strong>13:44 August 8 2018</strong><br>
 </p>
 <p>I adds support for scripting using Python. There are many things that is slow to do, but will faster when using scripts. For example, if I want to get a leave code, I have to hardcode a breakpoint in the code, print r0 register and recompile the code, which takes not a short time. Using script, this job seems really lightweight.</p>
@@ -208,14 +208,14 @@ To spawn process and load libraries, we need the <em>!Loader</em> server. I impl
 <p>Using script, I can customised the behavior of panic reporting. In this screenshot, it helps me finding the line where the panic occurs.</p>
 <p><strong>23:14 August 28 2018</strong><br>
 We got the first server to rendezvous back. When a server rendezvous back to its parent, that means it has done initializing, and ready to takes requests.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/484033151425970177/unknown.png" alt="I'm gonna take it" width="638" height="85" layout="responsive"></amp-img></p>
 <p><strong>22:52 September 23 2018</strong><br>
 There is heatdown while I research more, but eventually works on the emulator starts with an unexisted server which related to Posix</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/493449575798013962/unknown.png" alt="Hi Posix!" width="799" height="284" layout="responsive"></amp-img></p>
 <p>Each process has this server spawned. This is for compability with the standard C library. The font rasterizer ityperast.dll uses fopen and fclose.</p>
 <p><strong>6:16 AM September 24 2018</strong><br>
 I wake up finding the opcodes to plan my work while I'm away from the computer. At least these engineers have fun somewhere, I was assumed that they are like zombie when writing these brainfuck code.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/493561299410747413/unknown.png" alt="Mom" width="749" height="440" layout="responsive"></amp-img></p>
 <p>I think Urosh does a fake haha for my sake.</p>
 <p></p>
 <p>Reading Part 3 <a href="../../eka2l1-till-today-part-3/">here</a></p>
