@@ -83,7 +83,7 @@ def main():
                     
                     if srcset != new_srcset:
                         print "\t", srcset, "=>", new_srcset
-                
+            
             if parser == 'html':
                 return d.html(method='html').encode('utf8')
             return d.__unicode__().encode('utf8')
@@ -102,6 +102,8 @@ def main():
                     filetext = f.read().decode('utf8')
                 print "fixing links in ", filepath
                 newtext = fixLinks(filetext, parser)
+                newtext = newtext.replace('http://localhost:2368', 'https://bentokun.xyz')
+                newtext = newtext.replace('https://localhost:2368', 'https://bentokun.xyz')
                 with open(filepath, 'w') as f:
                     f.write(newtext)
 
