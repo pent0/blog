@@ -114,14 +114,14 @@
 <p>At that time I was headache with the stray signal problem. The semaphore was signaled twice, even third times in a row.</p>
 <p>Eventually, I found out that each time I set the request status, it signals the client thread once. But there isn't any check if I already signaled the client.</p>
 <p>The check is very important in scenario, where I forgot to return after setting a request status.</p>
-<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/503077800060911636/unknown.png" alt="Oops" width="933" height="251" layout="responsive"></amp-img></p>
+<p></p>
 <p>In midnight, MediatorServer joins your party. I wasn't happy and want to kick them all out, but if I do that, none of apps would run!! So I have to treat them as precious EKA2L1 member until I can implement them and kick them all out.</p>
 <p></p>
 <p>Honestly, I wasn't happy that more servers are spawned, because in EKA2L1, page table switching are a costly operation. I would rather implement them if I can, but I have to keep them until the emulator becomes more stable.</p>
 <p><strong>0:02 October 22 2018</strong></p>
 <p>I bring the ImGui render back from dead few months ago. It was really helpful and speed up my working process.</p>
 <p></p>
-<p><amp-img src="https://cdn.discordapp.com/attachments/431430141319708692/503973265086349313/unknown.png" alt="ImGui2" width="1295" height="731" layout="responsive"></amp-img></p>
+<p></p>
 <p></p>
 <p></p>
 <p>Breakpoints work too</p>
@@ -155,7 +155,7 @@ I actually keeps the fact that the app was already called EWsWinOpActive for a f
 <p></p>
 <p><strong>10:43 Jan 1 2019</strong><br>
 Using ImGui again to draw texts and bitmaps, I try rendering stuffs. There are many tries:</p>
-<p><amp-img src="https://cdn.discordapp.com/attachments/431430141319708692/529498861446627348/unknown.png" alt="Hey, wtf" width="1366" height="768" layout="responsive"></amp-img></p>
+<p></p>
 <p>The first try is funny. Basicly it does emulate the scanline behavior, cleaning the screen by spawning space characters. But with the wrong glScissor parameters and the fact that I'm spawning small window for every screen invalidation, it just looks funny,</p>
 <p></p>
 <p>The app drawing the title. On hardware, this doesn't get drawed, but it got draw on EKA2L1 anyway.</p>
