@@ -151,7 +151,7 @@ Working on the UI doesn't make me forget the core. I tried some more game like T
 <p><strong>23:43 June 22 2018</strong><br>
 App requests server for the first time. At this point, I starts to look more at IPC and how it works on Symbian. Spending a week studying the services, I finally starts to write some HLE code.</p>
 <p>This was started by first implementing a parameter dump of RSessionBase::CreateSession.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/459346510811758592/unknown.png" alt="Parameter dump" width="923" height="113" layout="responsive"></amp-img></p>
 <p><strong>20:42 June 24 2018</strong><br>
 I starts searching and digging about the Window Server. The window server responds for creating window, managing input (keyboard and touches), etc... Many of Symbian designs were inspired by Windows, and looking at the source code, you can probably sees that.</p>
 <p><amp-img src="https://cdn.discordapp.com/attachments/431430141319708692/460439538066653194/unknown.png" alt="Window Server source" width="677" height="578" layout="responsive"></amp-img></p>
@@ -194,18 +194,18 @@ At that time, I was also migrating from the idea of implement most subsets of AP
 <p></p>
 <p><strong>19:15 July 21 2018</strong><br>
 The ObjectNext system call is the first system call to works. Here, the FBS server is running, trying to find the object <em>FbsSharedChunk</em> to check if the process has already been spawned yet.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/470202152611086347/unknown.png" alt="It's running" width="978" height="381" layout="responsive"></amp-img></p>
 <p><strong>18:12 July 26 2018</strong><br>
 I got few more system calls implemented. One of them is HalFunction. HAL means High-level abstraction layer. Symbian uses this to trade informations between hardware and users.</p>
 <p>So many of them unimplemented!!!!</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/471998167534272512/unknown.png" alt="Unimplemented HAL calls" width="726" height="223" layout="responsive"></amp-img></p>
 <p><strong>15:27 July 27 2018</strong><br>
 The app requests to spawn EComServer process, which was a good chance for me to test multi processes.</p>
 <p>During multi processes implementation, I also completely wiped out HLE API implementation. I still plans to implement HLE OpenGL ES functions, but until then, I have to say goodbye to this costly plan.</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/472319013243060235/unknown.png" alt="Multi process" width="704" height="88" layout="responsive"></amp-img></p>
 <p><strong>23:11 July 27 2018</strong><br>
 To spawn process and load libraries, we need the <em>!Loader</em> server. I implement one, and testing it!</p>
-<p></p>
+<p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/472435842732785693/unknown.png" alt="Implementing Loader server" width="794" height="275" layout="responsive"></amp-img></p>
 <p><strong>13:44 August 8 2018</strong><br>
 </p>
 <p>I adds support for scripting using Python. There are many things that is slow to do, but will faster when using scripts. For example, if I want to get a leave code, I have to hardcode a breakpoint in the code, print r0 register and recompile the code, which takes not a short time. Using script, this job seems really lightweight.</p>
