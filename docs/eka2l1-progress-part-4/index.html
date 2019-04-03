@@ -8,7 +8,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="https://pent0.github.io/blog/assets/built/screen.css?v=4f05924638">
+    <link rel="stylesheet" type="text/css" href="https://pent0.github.io/blog/assets/built/screen.css?v=9311daa5e9">
 
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="canonical" href="index.html">
@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://pent0.github.io/blog/eka2l1-progress-part-4/">
     <meta property="og:image" content="https://pent0.github.io/blog/content/images/2019/03/unknown.png">
     <meta property="article:published_time" content="2019-01-22T12:15:26.000Z">
-    <meta property="article:modified_time" content="2019-03-26T13:28:36.000Z">
+    <meta property="article:modified_time" content="2019-04-03T00:12:37.000Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="EKA2l1 progress (part 4)">
     <meta name="twitter:description" content="6:50 AM 18/1/2018I got bored on EKA2L1 a little bit. I decided to try building a toolchain for Symbian in pure C. So far it's good, having CMake support integrated. I just wish I could write a debugger and a SIS maker also.22/1/2019 7:">
@@ -59,7 +59,7 @@
     "headline": "EKA2l1 progress (part 4)",
     "url": "https://pent0.github.io/blog/eka2l1-progress-part-4/",
     "datePublished": "2019-01-22T12:15:26.000Z",
-    "dateModified": "2019-03-26T13:28:36.000Z",
+    "dateModified": "2019-04-03T00:12:37.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://pent0.github.io/blog/content/images/2019/03/unknown.png",
@@ -74,7 +74,7 @@
 }
     </script>
 
-    <script src="https://pent0.github.io/blog/public/ghost-sdk.js?v=4f05924638"></script>
+    <script src="https://pent0.github.io/blog/public/ghost-sdk.js?v=9311daa5e9"></script>
 <script>
 ghost.init({
 	clientId: "ghost-frontend",
@@ -149,7 +149,9 @@ ghost.init({
 <p>14/3/2019 8:40 PM</p><p>The bitmap drawing work and FBS server bitmap cache has finished. However, it still need some debugging</p><p><img src="https://media.discordapp.net/attachments/431430141319708692/555747200920059924/unknown.png?width=806&amp;height=454" alt="Debug1"></p>
 <p>The smiley texture (we need to draw it), is currently empty. We don't know why, but soon I found out.</p><p>I told the driver that this have 1 mipmap, but yet I haven't generate any bitmap at all. Looks like it use the bitmap to draw, so i set layer of mipmap to 0.</p><p><img src="https://media.discordapp.net/attachments/431430141319708692/555758674941968399/unknown.png?width=806&amp;height=454" alt="Debug2"></p>
 <p>Yay, the texture shows up.</p><p>And here we go:</p><p><img src="https://media.discordapp.net/attachments/431430141319708692/555774955720146959/unknown.png?width=806&amp;height=454" alt="PP"></p>
-<p>The texture is flipped. We don't care about that yet. We need to get some apps running! Thanks smiley.</p><p>8:25 PM 26/3/2018</p><figure class="kg-card kg-image-card"><img src="../content/images/2019/03/image-1.png" class="kg-image"></figure><p>CDL server works, a bunch of DLL got loaded as you see. Those are DLL which contains static data references some layout data that the app want to get. Those plugins layouts are registerd through EComServer, and the references of what UID of data it may contains are in the resource file inside Z drive.</p><p>Now AknSkinServer goes ahead! We need it, than probably we almost done with the AKN framework. About Qt, not so sure! I think they are still based on AKN framework, since the whole OS Gui was build on it. However, the OS has some hack around Qt, that was requested by Nokia, which we need to handle in the future. We are not handling those hacks now.</p>
+<p>The texture is flipped. We don't care about that yet. We need to get some apps running! Thanks smiley.</p><p>8:25 PM 26/3/2018</p><figure class="kg-card kg-image-card"><img src="../content/images/2019/03/image-1.png" class="kg-image"></figure><p>CDL server works, a bunch of DLL got loaded as you see. Those are DLL which contains static data references some layout data that the app want to get. Those plugins layouts are registerd through EComServer, and the references of what UID of data it may contains are in the resource file inside Z drive.</p><p>Now AknSkinServer goes ahead! We need it, than probably we almost done with the AKN framework. About Qt, not so sure! I think they are still based on AKN framework, since the whole OS Gui was build on it. However, the OS has some hack around Qt, that was requested by Nokia, which we need to handle in the future. We are not handling those hacks now.</p><p>11:55 AM 30/3/2019</p><p><img src="https://media.discordapp.net/attachments/463217723934113795/561413284444766228/unknown.png" alt="Image"></p>
+<p>Works start on the SKN parser. So far, it has been able to parse some simple blocks. Including: name block, filename block, info block.</p>
+<p>22:55 PM 2/4/2019:</p><figure class="kg-card kg-image-card"><img src="../content/images/2019/04/image.png" class="kg-image"></figure><p>The SKN is partially finished. Meaning that it's useable. It has been able to parse bitmap infos, bitmap animation infos, color table, image table, restriction chunk.</p><p>Restriction chunk is a little-bit platform dependent. It means that it will only be parsed when an envrionment condition is met. For example, the chunk will only be evaluated if your environment language is Abaric!</p><p>Either way, I'm also have this written in a short time!</p><figure class="kg-card kg-image-card"><img src="../content/images/2019/04/image-1.png" class="kg-image"></figure><p>MIF parser, needed to get skin's bitmap files. MIF is another archive file type. It stands for machine-readable file, although that sounds not so right. MIF file basically archives a bunch of file without compression, and no name at all.</p><p>The code is written in C++, and scripting interface is in Python. You can use it without EKA2L1, just make sure to have symemu2.common module</p><figure class="kg-card kg-image-card"><img src="../content/images/2019/04/image-2.png" class="kg-image"></figure>
                 </div>
             </section>
 
@@ -337,7 +339,7 @@ ghost.init({
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="https://pent0.github.io/blog/assets/built/jquery.fitvids.js?v=4f05924638"></script>
+    <script type="text/javascript" src="https://pent0.github.io/blog/assets/built/jquery.fitvids.js?v=9311daa5e9"></script>
 
 
     <script>

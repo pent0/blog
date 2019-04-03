@@ -18,7 +18,7 @@
     <meta property="og:url" content="https://pent0.github.io/blog/eka2l1-progress-part-4/">
     <meta property="og:image" content="https://pent0.github.io/blog/content/images/2019/03/unknown.png">
     <meta property="article:published_time" content="2019-01-22T12:15:26.000Z">
-    <meta property="article:modified_time" content="2019-03-26T13:28:36.000Z">
+    <meta property="article:modified_time" content="2019-04-03T00:12:37.000Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="EKA2l1 progress (part 4)">
     <meta name="twitter:description" content="6:50 AM 18/1/2018I got bored on EKA2L1 a little bit. I decided to try building a toolchain for Symbian in pure C. So far it's good, having CMake support integrated. I just wish I could write a debugger and a SIS maker also.22/1/2019 7:">
@@ -55,7 +55,7 @@
     "headline": "EKA2l1 progress (part 4)",
     "url": "https://pent0.github.io/blog/eka2l1-progress-part-4/",
     "datePublished": "2019-01-22T12:15:26.000Z",
-    "dateModified": "2019-03-26T13:28:36.000Z",
+    "dateModified": "2019-04-03T00:12:37.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://pent0.github.io/blog/content/images/2019/03/unknown.png",
@@ -105,7 +105,7 @@
             </figure>
             <section class="post-content">
 
-                <p><strong>6:50 AM 18/1/2018</strong></p><figure class="kg-card kg-image-card"></figure><p>I got bored on EKA2L1 a little bit. I decided to try building a toolchain for Symbian in pure C. So far it's good, having CMake support integrated. I just wish I could write a debugger and a SIS maker also.</p><p>22/1/2019 7:13 PM</p><p>After some hesitations, mainly because I didn't have much idea was will head to me towards, I starts to work on the FBS. It first requests to load a Japanese Font.</p><figure class="kg-card kg-image-card"></figure><p>It was not weird at all though. It was asking if Japanese language is supported. Either way, we don't have this, and max height is set to 0, so we decline.</p><p>1/2/2019 ??: ??</p><p><amp-img src="https://media.discordapp.net/attachments/431430141319708692/540628797624680459/unknown.png" alt="Analyzer" width="961" height="85" layout="responsive"></amp-img></p>
+                <p><strong>6:50 AM 18/1/2018</strong></p><figure class="kg-card kg-image-card"></figure><p>I got bored on EKA2L1 a little bit. I decided to try building a toolchain for Symbian in pure C. So far it's good, having CMake support integrated. I just wish I could write a debugger and a SIS maker also.</p><p>22/1/2019 7:13 PM</p><p>After some hesitations, mainly because I didn't have much idea was will head to me towards, I starts to work on the FBS. It first requests to load a Japanese Font.</p><figure class="kg-card kg-image-card"></figure><p>It was not weird at all though. It was asking if Japanese language is supported. Either way, we don't have this, and max height is set to 0, so we decline.</p><p>1/2/2019 ??: ??</p><p></p>
 <p>The analyzer is practically finished after a few months of keeping it secert. It was supposed to work along with LLVM recompiler, but due to me can't think of a proper cache design for LLVM, the recompiler now still on hold.</p>
 <p>The analyzer though, found many subroutines but requires a long time.</p>
 <p>4/2/2019 7:02 PM</p><p></p>
@@ -115,7 +115,9 @@
 <p>14/3/2019 8:40 PM</p><p>The bitmap drawing work and FBS server bitmap cache has finished. However, it still need some debugging</p><p></p>
 <p>The smiley texture (we need to draw it), is currently empty. We don't know why, but soon I found out.</p><p>I told the driver that this have 1 mipmap, but yet I haven't generate any bitmap at all. Looks like it use the bitmap to draw, so i set layer of mipmap to 0.</p><p></p>
 <p>Yay, the texture shows up.</p><p>And here we go:</p><p></p>
-<p>The texture is flipped. We don't care about that yet. We need to get some apps running! Thanks smiley.</p><p>8:25 PM 26/3/2018</p><figure class="kg-card kg-image-card"></figure><p>CDL server works, a bunch of DLL got loaded as you see. Those are DLL which contains static data references some layout data that the app want to get. Those plugins layouts are registerd through EComServer, and the references of what UID of data it may contains are in the resource file inside Z drive.</p><p>Now AknSkinServer goes ahead! We need it, than probably we almost done with the AKN framework. About Qt, not so sure! I think they are still based on AKN framework, since the whole OS Gui was build on it. However, the OS has some hack around Qt, that was requested by Nokia, which we need to handle in the future. We are not handling those hacks now.</p>
+<p>The texture is flipped. We don't care about that yet. We need to get some apps running! Thanks smiley.</p><p>8:25 PM 26/3/2018</p><figure class="kg-card kg-image-card"></figure><p>CDL server works, a bunch of DLL got loaded as you see. Those are DLL which contains static data references some layout data that the app want to get. Those plugins layouts are registerd through EComServer, and the references of what UID of data it may contains are in the resource file inside Z drive.</p><p>Now AknSkinServer goes ahead! We need it, than probably we almost done with the AKN framework. About Qt, not so sure! I think they are still based on AKN framework, since the whole OS Gui was build on it. However, the OS has some hack around Qt, that was requested by Nokia, which we need to handle in the future. We are not handling those hacks now.</p><p>11:55 AM 30/3/2019</p><p><amp-img src="https://media.discordapp.net/attachments/463217723934113795/561413284444766228/unknown.png" alt="Image" width="637" height="274" layout="responsive"></amp-img></p>
+<p>Works start on the SKN parser. So far, it has been able to parse some simple blocks. Including: name block, filename block, info block.</p>
+<p>22:55 PM 2/4/2019:</p><figure class="kg-card kg-image-card"></figure><p>The SKN is partially finished. Meaning that it's useable. It has been able to parse bitmap infos, bitmap animation infos, color table, image table, restriction chunk.</p><p>Restriction chunk is a little-bit platform dependent. It means that it will only be parsed when an envrionment condition is met. For example, the chunk will only be evaluated if your environment language is Abaric!</p><p>Either way, I'm also have this written in a short time!</p><figure class="kg-card kg-image-card"></figure><p>MIF parser, needed to get skin's bitmap files. MIF is another archive file type. It stands for machine-readable file, although that sounds not so right. MIF file basically archives a bunch of file without compression, and no name at all.</p><p>The code is written in C++, and scripting interface is in Python. You can use it without EKA2L1, just make sure to have symemu2.common module</p><figure class="kg-card kg-image-card"></figure>
 
             </section>
 
