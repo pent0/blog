@@ -22,8 +22,8 @@ import re
 import sys
 import fnmatch
 import shutil
-import SocketServer
-import SimpleHTTPServer
+import socketserver
+import http.server
 from docopt import docopt
 from time import gmtime, strftime
 from git import Repo
@@ -55,7 +55,7 @@ def main():
             for filename in filenames:
                 if file_regex.match(filename):
                     newname = re.sub(r'\?.*', '', filename)
-                    print "Rename", filename, "=>", newname
+                    print("Rename", filename, "=>", newname)
                     os.rename(os.path.join(root, filename), os.path.join(root, newname))
 
         # remove superfluous "index.html" from relative hyperlinks found in text
@@ -69,7 +69,7 @@ def main():
                     new_href = re.sub(r'rss/index\.html$', 'rss/index.rss', href)
                     new_href = re.sub(r'/index\.html$', '/', new_href)
                     e.attr('href', new_href)
-                    print "\t", href, "=>", new_href
+                    print("\t", href, "=>", new_href)
                     
             for element in d('img'):
                 e = PyQuery(element)
@@ -82,11 +82,11 @@ def main():
                     e.attr('srcset', new_srcset)
                     
                     if srcset != new_srcset:
-                        print "\t", srcset, "=>", new_srcset
+                        print("\t", srcset, "=>", new_srcset)
             
             if parser == 'html':
-                return d.html(method='html').encode('utf8')
-            return d.__unicode__().encode('utf8')
+                return d.html(method='html')
+            return d.__unicode__()
 
         # fix links in all html files
         for root, dirs, filenames in os.walk(static_path):
@@ -98,14 +98,18 @@ def main():
                     newfilepath = os.path.join(root, os.path.splitext(filename)[0] + ".rss")
                     os.rename(filepath, newfilepath)
                     filepath = newfilepath
-                with open(filepath) as f:
-                    filetext = f.read().decode('utf8')
-                print "fixing links in ", filepath
-                newtext = fixLinks(filetext, parser)
-                newtext = newtext.replace('http://localhost:2368', 'https://bentokun.xyz')
-                newtext = newtext.replace('https://localhost:2368', 'https://bentokun.xyz')
-                with open(filepath, 'w') as f:
-                    f.write(newtext)
+                with open(filepath, 'r', encoding='utf8') as f:
+                    filetext = f.read()
+                print("fixing links in ", filepath)
+                
+                try:
+                  newtext = fixLinks(filetext, parser)
+                  newtext = newtext.replace('http://localhost:2368', 'https://pent0.github.io/blog')
+                  newtext = newtext.replace('https://localhost:2368', 'https://pent0.github.io/blog')
+                  with open(filepath, 'w', encoding='utf8') as f:
+                      f.write(newtext)
+                except:
+                  pass
 
     elif arguments['preview']:
         os.chdir(static_path)
@@ -113,7 +117,7 @@ def main():
         Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
         httpd = SocketServer.TCPServer(("", 9000), Handler)
 
-        print "Serving at port 9000"
+        print("Serving at port 9000")
         # gracefully handle interrupt here
         httpd.serve_forever()
 
@@ -151,7 +155,7 @@ def main():
         with open(file_path, 'w') as f:
             f.write('# Blog\nPowered by [Ghost](http://ghost.org) and [Buster](https://github.com/axitkhurana/buster/).\n')
 
-        print "All set! You can generate and deploy now."
+        print("All set! You can generate and deploy now.")
 
     elif arguments['deploy']:
         repo = Repo(static_path)
@@ -163,7 +167,7 @@ def main():
         origin = repo.remotes.origin
         repo.git.execute(['git', 'push', '-u', origin.name,
                          repo.active_branch.name])
-        print "Good job! Deployed to Github Pages."
+        print("Good job! Deployed to Github Pages.")
 
     elif arguments['add-domain']:
         repo = Repo(static_path)
@@ -173,10 +177,10 @@ def main():
         with open(file_path, 'w') as f:
             f.write(custom_domain + '\n')
 
-        print "Added CNAME file to repo. Use `deploy` to deploy"
+        print("Added CNAME file to repo. Use `deploy` to deploy")
 
     else:
-        print __doc__
+        print(__doc__)
 
 if __name__ == '__main__':
     main()
